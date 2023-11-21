@@ -1,10 +1,11 @@
 <?php
-require_once 'includes/config_session.inc.php';
-require_once 'includes/check_session.inc.php';
-require_once 'includes/partials/header.inc.php';
-require_once 'includes/partials/footer.inc.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/config_session.inc.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/check_session.inc.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/partials/header.inc.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/partials/footer.inc.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/view/index_view.inc.php';
 
-check_session();
+    check_session();
 ?>
 
 <!DOCTYPE html>

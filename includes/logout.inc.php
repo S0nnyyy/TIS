@@ -1,8 +1,10 @@
 <?php
-session_start();
-session_unset();
-session_destroy();
+    // Spuštění session, odstranění dat z session a zničení session
+    session_start();
+    session_unset();
+    session_destroy();
 
-header("Location: ../login.php");
-die();
+    // Přesměrování na přihlašovací stránku
+    header("Location: ../login.php");
+    die();
 ?>

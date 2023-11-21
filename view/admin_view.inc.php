@@ -1,8 +1,15 @@
 <?php
 
+// Přísná kontrola typů pro celý soubor
 declare(strict_types=1);
 
+/**
+ * Funkce pro zobrazení tabulky s informacemi o serveru a PHP, a seznamu uživatelů.
+ *
+ * @return void
+ */
 function display_users_table() {
+    // Zobrazení informací o serveru a PHP
     echo '<h1>Informace o serveru a PHP</h1>';
     echo '<table class="table"><thead><tr><th scope="col">Informace</th><th scope="col">Hodnota</th></tr></thead><tbody>';
     echo '<tr><td>PHP verze</td><td>' . phpversion() . '</td></tr>';
@@ -16,6 +23,7 @@ function display_users_table() {
     echo '<tr><td>Architektura</td><td>' . php_uname('m') . '</td></tr>';
     echo '</tbody></table>';
 
+    // Zobrazení seznamu uživatelů
     echo '<h1>Uživatelé</h1>';
     $users = $_SESSION["users"];
     echo '<table class="table">';
@@ -31,7 +39,6 @@ function display_users_table() {
     echo '</tr>';
     echo '</thead>';
     echo '<tbody>';
-    
 
     foreach ($users as $index => $user) {
         echo '<tr>';
@@ -43,7 +50,8 @@ function display_users_table() {
         echo '<td>' . ($user['is_banned'] ? 'Ano' : 'Ne') . '</td>';
         echo '<td class="d-flex">';
         echo '<form action="includes/admin_update_user.inc.php" method="post" class="m-1">';
-        echo '<button class="btn btn-success">Upravit</button>';
+        echo '<input type="hidden" name="user_id" value="' . $user['id'] . '">';
+        echo '<button type="submit" class="btn btn-success">Upravit</button>';
         echo '</form>';
         echo '<form action="includes/admin_remove_user.inc.php" method="post" class="m-1" onsubmit="return confirmDelete();">';
         echo '<input type="hidden" name="user_id" value="' . $user['id'] . '">';
@@ -66,7 +74,7 @@ function display_users_table() {
     echo '</tbody>';
     echo '</table>';
 
-    // Define the JavaScript function outside the script block
+    // Definice JavaScript funkce mimo blok skriptu
     echo '<script>';
     echo 'function confirmDelete() {';
     echo '    return confirm("Opravdu chceš odstranit uživatele?");';

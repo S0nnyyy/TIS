@@ -1,6 +1,6 @@
 <?php
-require_once 'includes/config_session.inc.php';
-require_once 'view/login_view.inc.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/config_session.inc.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/view/login_view.inc.php';
 ?>
 
 <!DOCTYPE html>
