@@ -18,9 +18,6 @@ function display_users_table() {
     echo '<tr><td>Název hostitele</td><td>' . $_SERVER['SERVER_NAME'] . '</td></tr>';
     echo '<tr><td>Adresa klienta</td><td>' . $_SERVER['REMOTE_ADDR'] . '</td></tr>';
     echo '<tr><td>Informace o serveru</td><td>' . php_uname() . '</td></tr>';
-    echo '<tr><td>Verze PHP</td><td>' . phpversion() . '</td></tr>';
-    echo '<tr><td>Operační systém</td><td>' . PHP_OS . '</td></tr>';
-    echo '<tr><td>Architektura</td><td>' . php_uname('m') . '</td></tr>';
     echo '</tbody></table>';
 
     // Zobrazení seznamu uživatelů

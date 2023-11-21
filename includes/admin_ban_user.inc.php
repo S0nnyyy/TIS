@@ -33,9 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $users = get_users($pdo);
             $_SESSION["users"] = $users;
 
-            // Zobrazení tabulky uživatelů
-            display_users_table();
-
             // Přesměrování na administrační stránku
             header("Location: ../admin.php");
             exit();

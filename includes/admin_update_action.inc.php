@@ -13,9 +13,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $username = $_POST['username'];
         $email = $_POST['email'];
         $role = $_POST['role'];
+        $userId = $_POST['user_id'];
 
         // Volání funkce pro aktualizaci uživatelských dat v databázi
-        update_user_data($pdo, $username, $email, $role);
+        update_user_data($pdo, $userId, $username, $email, $role);
 
         // Přesměrování zpět na stránku s tabulkou admin.php
         header('Location: ../admin.php');

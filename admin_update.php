@@ -29,7 +29,9 @@ $loadedUserData = $_SESSION['loaded_user_data'] ?? [];
 <body>
     <main class="container my-5">
         <h2>Uprava uživatele - <?= $loadedUserData['username'] ?? '' ?></h2>
+        <h7 class="m-3">ID: <?= $loadedUserData['id'] ?? '' ?></h7>
         <form action="includes/admin_update_action.inc.php" method="post">
+            <input type="hidden" name="user_id" value="<?= $loadedUserData['id'] ?? '' ?>">
             <div class="form-group m-3">
                 <label class="form-label">Uživatelské jméno</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Zadejte uživatelské jméno" value="<?= $loadedUserData['username'] ?? '' ?>">
@@ -46,8 +48,6 @@ $loadedUserData = $_SESSION['loaded_user_data'] ?? [];
                 </select>
             </div>
             <button type="submit" class="btn btn-primary m-3">Upravit</button>
-
-            <!-- Tlačítko Zpět s přesměrováním na admin.php -->
             <a href="admin.php" class="btn btn-danger">Zpět</a>
         </form>
     </main>
