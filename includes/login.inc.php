@@ -10,9 +10,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     try {
         
         // Načtení souborů pro databázi, model a kontrolér
-        require_once 'dbh.inc.php';
-        require_once '../model/login_model.inc.php';
-        require_once '../controller/login_contr.inc.php';
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/dbh.inc.php';
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/model/login_model.inc.php';
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/controller/login_contr.inc.php';
 
         // ! OŠETŘENÍ CHYB
 
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         // Načtení souboru pro práci se session
-        require_once 'config_session.inc.php';
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/config_session.inc.php';
 
         // Pokud existují chyby, uložíme je do session a přesměrujeme na přihlášení
         if ($errors) {

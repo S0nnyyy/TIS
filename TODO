@@ -1,6 +1,7 @@
 FIX
 - URL PRO ADMINA
 - ADMIN UPRAVIT - RELOAD DAT
+- pokud uživatel odkaže na login musi se znova přihlasit i když session neskončila
 
 PŘIDAT
 - ROUTENÍ PRO FILMY
