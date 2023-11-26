@@ -18,6 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Volání funkce pro aktualizaci uživatelských dat v databázi
         update_user_data($pdo, $userId, $username, $email, $role);
 
+        $users = get_users($pdo);
+        $_SESSION["users"] = $users;
+
         // Přesměrování zpět na stránku s tabulkou admin.php
         header('Location: ../admin.php');
         exit();

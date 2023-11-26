@@ -25,9 +25,9 @@ check_session();
 </head>
     <body>
         <header>
-            <?php header_html();?>;
+            <?php header_html();?>
         </header>
-        <main class="container vh-100">     
+        <main class="container">     
             <?php display_users_table();?>
         </main>
         <!--FOOTER-->

@@ -31,4 +31,16 @@ function get_user_data(object $pdo, int $userId) {
     return $userData ? $userData : false;
 }
 
+/**
+ * Funkce pro získání všech uživatelů z databáze.
+ *
+ * @param object $pdo - PDO objekt připojení k databázi
+ * @return array - Pole obsahující všechny uživatele ve formě asociativního pole nebo prázdné pole, pokud nejsou žádní uživatelé k dispozici
+ */
+function get_users(object $pdo) {
+    $query = "SELECT * FROM users";
+    $stmt = $pdo->query($query);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 ?>
