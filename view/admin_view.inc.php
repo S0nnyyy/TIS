@@ -3,6 +3,7 @@
 // Přísná kontrola typů pro celý soubor
 declare(strict_types=1);
 
+
 /**
  * Funkce pro zobrazení tabulky s informacemi o serveru a PHP, a seznamu uživatelů.
  *
@@ -80,7 +81,7 @@ function display_users_table() {
 
     echo '<script>';
     echo 'function confirmBan() {';
-    echo '    return confirm("Opravdu chceš zabanovat uživatele?");';
+    echo '    return confirm("Opravdu chceš zabanovat/odbanovat uživatele?");';
     echo '}';
     echo '</script>';
 }
