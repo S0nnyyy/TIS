@@ -25,9 +25,6 @@ function header_html(){
     echo '                    <a class="nav-link" href="#">Novinky</a>';
     echo '                </li>';
     echo '                <li class="nav-item">';
-    echo '                    <a class="nav-link" href="#">Lidé</a>';
-    echo '                </li>';
-    echo '                <li class="nav-item">';
     echo '                    <a class="nav-link" href="faq.php">FAQs</a>';
     echo '                </li>';
     echo '                <li class="nav-item">';

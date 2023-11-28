@@ -1,5 +1,4 @@
 <?php
-
 // Načtení souboru index.inc.php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/index.inc.php';
 
@@ -16,26 +15,38 @@ function display_films() {
     echo "<div class='row mt-5'>";
     foreach ($films as $film) {
         echo "<div class='col-md-4 mb-3'>";
-        echo "<div class='card h-100' onclick='showFilmDetails({$film['id']})'>";
-        echo "<img class='card-img-top' src='{$film['image_url']}' alt='{$film['title']}'>";
-        echo "<div class='card-body'>";
-        echo "<h5 class='card-title'>{$film['title']}</h5>";
-        echo "<h6 class='card-title text-muted' style='font-size: smaller;'>{$film['czech_name']}</h6>";
-        echo "</div>";
-
-        echo "<div class='card-body'>";
         echo '<form action="includes/film.inc.php" method="get">';
-        echo '<input type="hidden" name="film_id" value="' . $film['id'] . '">';
-        echo '  <button type="submit" class="btn btn-success w-100">Více</button>';
+        echo "<button type='submit' class='card h-100 btn btn-link p-0' name='film_id' value='{$film['id']}'>";
+        echo "<div class='bg-image hover-zoom'>"; // Přidána třída hover-zoom
+        echo "<img class='card-img-top w-100' src='{$film['image_url']}' alt='{$film['title']}'>";
+        echo "</div>";
+        echo "</button>";
         echo '</form>';
-        echo "</div>";
-
-        echo "</div>";
         echo "</div>";
     }
 
     // Zavření řádku
     echo "</div>";
     echo "</div>";
+
+    // Přidání jQuery pro zoom efekt s transition a zvětšením o 3 px
+    echo <<<HTML
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        .hover-zoom img {
+            transition: transform 0.3s ease; /* Transition time 0.3s s efektem ease */
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            // Přidání zoom efektu na obrázek s třídou hover-zoom
+            $(".hover-zoom img").hover(function(){
+                $(this).css("transform", "scale(1.03) translate(3px, 3px)"); // Zvětšení obrázku na 110% s přesunutím o 3px
+            }, function(){
+                $(this).css("transform", "scale(1)"); // Návrat obrázku na původní velikost
+            });
+        });
+    </script>
+HTML;
 }
 ?>

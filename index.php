@@ -26,7 +26,6 @@
         <header>
             <?php header_html();?>;
         </header>
-
         <main class="container">
             <div class="navbar bg-body-tertiary" data-bs-theme="dark">
                 <div class="container-fluid">

@@ -84,7 +84,7 @@ function display_film() {
         echo '            <div class="card-body">';         
         echo '                <div class="d-flex flex-start align-items-center">';
         echo '                    <img class="rounded-circle shadow-1-strong me-3"';
-        echo '                        src="./img/profile/default_profile.png"';
+        echo '                        src="./img/profile/default_avatar.png"';
         echo '                        alt="avatar" width="60" height="60" />';
         echo '                    <div>';
         echo '                        <h6 class="fw-bold text-primary mb-1">' . $comment['username'] . '</h6>';
