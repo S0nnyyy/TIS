@@ -20,6 +20,7 @@ function display_films() {
         echo "<img class='card-img-top' src='{$film['image_url']}' alt='{$film['title']}'>";
         echo "<div class='card-body'>";
         echo "<h5 class='card-title'>{$film['title']}</h5>";
+        echo "<h6 class='card-title text-muted' style='font-size: smaller;'>{$film['czech_name']}</h6>";
         echo "</div>";
     
         echo "<div class='card-body'>";
