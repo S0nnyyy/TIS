@@ -3,7 +3,6 @@
 // Přísná kontrola typů pro celý soubor
 declare(strict_types=1);
 
-
 /**
  * Funkce pro zobrazení tabulky s informacemi o serveru a PHP, a seznamu uživatelů.
  *

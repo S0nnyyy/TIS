@@ -22,14 +22,14 @@ function display_films() {
         echo "<h5 class='card-title'>{$film['title']}</h5>";
         echo "<h6 class='card-title text-muted' style='font-size: smaller;'>{$film['czech_name']}</h6>";
         echo "</div>";
-    
+
         echo "<div class='card-body'>";
         echo '<form action="includes/film.inc.php" method="get">';
         echo '<input type="hidden" name="film_id" value="' . $film['id'] . '">';
         echo '  <button type="submit" class="btn btn-success w-100">Více</button>';
         echo '</form>';
         echo "</div>";
-        
+
         echo "</div>";
         echo "</div>";
     }

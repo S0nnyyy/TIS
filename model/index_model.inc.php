@@ -31,5 +31,4 @@ function get_user_role(object $pdo, string $userUsername) {
 
     return $user;
 }
-
 ?>

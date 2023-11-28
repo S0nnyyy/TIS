@@ -9,7 +9,6 @@
 ?>
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,12 +24,8 @@
 
 </head>
     <body>
-        <header>
-            <?php header_html();?>;
-
-        </header>
-
-        <?php display_film();?>
+        <header><?php header_html();?>;</header>
+        <main><?php display_film();?></main>
         <!--FOOTER-->
         <?php footer_html();?>
     </body>

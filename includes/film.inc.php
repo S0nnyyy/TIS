@@ -27,6 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         
         // Uložení filmových dat do session
         $_SESSION['film_data'] = $film_data;
+        $_SESSION['film_id'] = $film_id;
+
 
         // Přesměrování na stránku film.php
         header('Location: ../film.php');

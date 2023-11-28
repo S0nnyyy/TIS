@@ -1,9 +1,11 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/config_session.inc.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/comment_load.inc.php';
 
 function display_film() {
     $filmData = $_SESSION["film_data"];
+    $comments = $_SESSION['comments'];
 
     // HTML kód pro stránku filmu
     echo '<div class="container mt-3">';
@@ -46,23 +48,71 @@ function display_film() {
     // Místo pro komentáře
     echo '<div class="row mt-3">';
     echo '<div class="col-md-12">';
-    echo '<h3>Komentáře</h3>';
+    echo '<h3>Přidat komentář</h3>';
     echo '<div class="container bootdey shadow p-3 mb-5 bg-white rounded">';
     echo '<div class="col-md-12 bootstrap snippets">';
     echo '<div class="panel">';
     echo '<div class="panel-body">';
     echo '<form method="post" action="includes/comment.inc.php">';
-    echo '<textarea class="form-control mb-3" rows="2" placeholder="Jaký je tvůj názor?"></textarea>';
+    echo '<input type="hidden" name="movie_id" value="' . $filmData['id'] . '">'; 
+    echo '<textarea class="form-control mb-3" rows="2" name="comment_text" placeholder="Jaký je tvůj názor?"></textarea>';
     echo '<div class="text-right">';
     echo '<button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-pencil fa-fw"></i> Přidat komentář</button>';
     echo '</div>';
-    echo '</form>'; 
+    echo '</form>';
     echo '</div>';
     echo '</div>';
     echo '</div>';
     echo '</div>';
     echo '</div>';
     echo '</div>';
+        // Oddělovací čára nad komentáři
+        echo '<div class="row mt-3">';
+        echo '<div class="col-md-12">';
+        echo '<hr>';
+        echo '</div>';
+        echo '</div>';
+
+    echo '<h3>Komentáře</h3>';
+
+    echo '<div class="container mt-3">';
+
+    foreach ($comments as $comment):
+        echo '<div class="row justify-content-center mb-4">'; // Center the comment
+        echo '    <div class="col-md-12 col-lg-10 col-xl-8">';
+        echo '        <div class="card">';
+        echo '            <div class="card-body">';         
+        echo '                <div class="d-flex flex-start align-items-center">';
+        echo '                    <img class="rounded-circle shadow-1-strong me-3"';
+        echo '                        src="./img/profile/default_profile.png"';
+        echo '                        alt="avatar" width="60" height="60" />';
+        echo '                    <div>';
+        echo '                        <h6 class="fw-bold text-primary mb-1">' . $comment['username'] . '</h6>';
+        echo '                        <p class="text-muted small mb-0">';
+        echo '                            ' . date('M Y', strtotime($comment['created_at'])) . '';
+        echo '                        </p>';
+        echo '                    </div>';
+        echo '                </div>';
+        echo '                <p class="mt-3 mb-4 pb-2">' . $comment['comment_text'] . '</p>';
+        echo '                <div class="small d-flex justify-content-start">';
+        echo '                    <a href="#!" class="d-flex align-items-center me-3">';
+        echo '                        <i class="far fa-thumbs-up me-2"></i>';
+        echo '                        <p class="mb-0">Like</p>';
+        echo '                    </a>';
+        echo '                    <a href="#!" class="d-flex align-items-center me-3">';
+        echo '                        <i class="far fa-comment-dots me-2"></i>';
+        echo '                        <p class="mb-0">Comment</p>';
+        echo '                    </a>';
+        echo '                    <a href="#!" class="d-flex align-items-center me-3">';
+        echo '                        <i class="fas fa-share me-2"></i>';
+        echo '                        <p class="mb-0">Share</p>';
+        echo '                    </a>';
+        echo '                </div>';
+        echo '            </div>';
+        echo '        </div>';
+        echo '    </div>';
+        echo '</div>';
+    endforeach;
 
     // Konec kontejneru
     echo '</div>';
