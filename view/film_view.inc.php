@@ -1,8 +1,11 @@
 <?php
 
+// Zahrnutí potřebných souborů
 require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/config_session.inc.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/comment_load.inc.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/search_results.inc.php';
 
+// Funkce pro zobrazení detailů filmu a komentářů
 function display_film() {
     $filmData = $_SESSION["film_data"];
     $comments = $_SESSION['comments'];
@@ -10,27 +13,27 @@ function display_film() {
     // HTML kód pro stránku filmu
     echo '<div class="container mt-3">';
     
-    // Zpětné tlačítko
+    // Tlačítko Zpět
     echo '<div class="row mb-3">';
     echo '<div class="col-md-12">';
     echo '<a href="javascript:history.go(-1)" class="btn btn-primary">Zpět</a>';
     echo '</div>';
     echo '</div>';
 
-    // Obrázek filmu na levé straně
+    // Obrázek filmu vlevo
     echo '<div class="row">';
     echo '<div class="col-md-6">';
     echo '<img src="' . $filmData['image_url'] . '" class="img-fluid" alt="' . $filmData['title'] . '">';
     echo '</div>';
 
-    // Informace o filmu na pravé straně
+    // Informace o filmu vpravo
     echo '<div class="col-md-6">';
     echo '<h2>' . $filmData['title'] . '</h2>';
     echo "<h6 class='card-title text-muted' style='font-size: smaller;'>{$filmData['czech_name']}</h6>";
     echo '<p>'. display_rating_stars($filmData['rating']) . '</p>';
     echo '<p><strong class="font-weight-bold">Přehled</strong><br>' . $filmData['description'] . '</p>';
-    // Zde můžete vypsat další informace o filmu, například režisér, délka, hodnocení, atd.
-    echo '<p><strong class="font-weight-bold">Director:</strong><br>' . $filmData['director'] . '</p>';
+    // Další informace o filmu (režisér, žánr, datum vydání, tagy, atd.)
+    echo '<p><strong class="font-weight-bold">Režisér:</strong><br>' . $filmData['director'] . '</p>';
     echo '<p><strong class="font-weight-bold">Žánr:</strong><br>' . $filmData['genre'] . '</p>';
     echo '<p><strong class="font-weight-bold">Datum vydání:</strong><br>' . $filmData['release_date'] . '</p>';
     echo '<p><strong class="font-weight-bold">Tagy:</strong><br>' . $filmData['tags'] . '</p>';
@@ -45,7 +48,7 @@ function display_film() {
     echo '</div>';
     echo '</div>';
     
-    // Místo pro komentáře
+    // Oblast pro komentáře
     echo '<div class="row mt-3">';
     echo '<div class="col-md-12">';
     echo '<h3>Přidat komentář</h3>';
@@ -66,19 +69,27 @@ function display_film() {
     echo '</div>';
     echo '</div>';
     echo '</div>';
-        // Oddělovací čára nad komentáři
-        echo '<div class="row mt-3">';
-        echo '<div class="col-md-12">';
-        echo '<hr>';
-        echo '</div>';
-        echo '</div>';
+
+    // Oddělovací čára nad komentáři
+    echo '<div class="row mt-3">';
+    echo '<div class="col-md-12">';
+    echo '<hr>';
+    echo '</div>';
+    echo '</div>';
 
     echo '<h3>Komentáře</h3>';
 
     echo '<div class="container mt-3">';
-
+    // Styl pro skrytí šipky v dropdownu
+    echo '<style>';
+    echo '.dropdown-toggle::after {';
+    echo '    display: none;';
+    echo '}';
+    echo '</style>';
+    
+    // Zobrazení komentářů
     foreach ($comments as $comment):
-        echo '<div class="row justify-content-center mb-4">'; // Center the comment
+        echo '<div class="row justify-content-center mb-4">';
         echo '    <div class="col-md-12 col-lg-10 col-xl-8">';
         echo '        <div class="card">';
         echo '            <div class="card-body">';         
@@ -94,6 +105,24 @@ function display_film() {
         echo '                    </div>';
         echo '                </div>';
         echo '                <p class="mt-3 mb-4 pb-2">' . $comment['comment_text'] . '</p>';
+        
+        // Pokud komentář patří přihlášenému uživateli
+        if (isset($_SESSION['user_id']) && $comment['user_id'] == $_SESSION['user_id']) {
+            echo '<div class="float-end small d-flex justify-content-start">';
+            echo '    <div class="dropdown">';
+            echo '        <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="true">';
+            echo '            <i class="fa fa-ellipsis-h" aria-hidden="true"></i>';
+            echo '        </button>';
+            echo '        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">';
+            echo '    <form class="dropdown-item" method="post" action="includes/delete_comment.inc.php">';
+            echo '        <input type="hidden" name="comment_id" value="' . $comment['comment_id'] . '">';
+            echo '        <button class="btn btn-link" type="submit"><i class="fas fa-trash-alt me-2"></i>Odstranit Komentář</button>';
+            echo '    </form>';
+            echo '        </ul>';
+            echo '    </div>';
+            echo '</div>';
+        }
+        
         echo '                <div class="small d-flex justify-content-start">';
         echo '                    <a href="#!" class="d-flex align-items-center me-3">';
         echo '                        <i class="far fa-thumbs-up me-2"></i>';
@@ -118,11 +147,12 @@ function display_film() {
     echo '</div>';
 }
 
+// Funkce pro zobrazení hvězdiček hodnocení
 function display_rating_stars($rating) {
-    // Omezte hodnocení na rozmezí 1 až 5
+    // Omezení hodnocení na rozmezí 1 až 5
     $normalized_rating = max(1, min(5, $rating));
 
-    // Vytvořte HTML pro hodnocení a hvězdičky v jednom řádku
+    // HTML pro hvězdičky hodnocení v jednom řádku
     $html = '<div class="rating-stars">';
     $html .= '<p class="mb-0"><strong>Hodnocení:</strong><br>';
     for ($i = 1; $i <= 5; $i++) {

@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @param string $comment_text - Text komentáře
  * @return void
  */
-function add_comment_to_database(PDO $pdo, int $user_id, int $movie_id, string $comment_text) {
+function add_comment_to_database(object $pdo, int $user_id, int $movie_id, string $comment_text) {
     // Příprava SQL dotazu s ošetřením proti SQL injection
     $query = "INSERT INTO comments (user_id, movie_id, comment_text) VALUES (?, ?, ?)";
     $stmt = $pdo->prepare($query);
@@ -30,7 +30,7 @@ function add_comment_to_database(PDO $pdo, int $user_id, int $movie_id, string $
  * @param int $movie_id - ID filmu, ke kterému se hledají komentáře
  * @return array - Pole obsahující komentáře ve formě asociativního pole nebo prázdné pole, pokud nejsou žádné komentáře
  */
-function get_comments_for_movie(PDO $pdo, int $movie_id) {
+function get_comments_for_movie(object $pdo, int $movie_id) {
     $query = "SELECT c.comment_id, c.user_id, c.movie_id, c.comment_text, c.created_at, u.username
               FROM comments c
               JOIN users u ON c.user_id = u.id
@@ -44,4 +44,17 @@ function get_comments_for_movie(PDO $pdo, int $movie_id) {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+/**
+ * Funkce pro odstranění komentáře z databáze na základě zadaného ID komentáře.
+ *
+ * @param PDO $pdo - PDO objekt připojení k databázi
+ * @param int $commentId - ID komentáře k odstranění
+ * @return bool - True, pokud byl komentář úspěšně odstraněn, jinak false
+ */
+function delete_comment(object $pdo, int $comment_id) {
+    $query = "DELETE FROM comments WHERE comment_id = :comment_id";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':comment_id', $comment_id, PDO::PARAM_INT);
+    return $stmt->execute();
+}
 ?>

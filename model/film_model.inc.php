@@ -10,7 +10,7 @@ declare(strict_types=1);
  * @param int $film_id - ID filmu, pro který se mají získat data
  * @return array|false - Asociativní pole s daty o filmu nebo false, pokud film není nalezen
  */
-function get_film_data_by_id(PDO $pdo, int $film_id) {
+function get_film_data_by_id(object $pdo, int $film_id) {
     // Příprava dotazu
     $query = "SELECT * FROM movies WHERE id = :film_id";
     $stmt = $pdo->prepare($query);

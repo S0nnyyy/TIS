@@ -1,5 +1,10 @@
 <?php
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/check_session.inc.php';
+
+check_session();
+
+
 // Načtení souborů pro databázi, model a kontrolér
 require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/dbh.inc.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/model/comment_model.inc.php';

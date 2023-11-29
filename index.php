@@ -41,10 +41,10 @@
                             </ul>
                         </div>
                     </div>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Hledat Film, osobu..." aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Vyhledat</button>
-                    </form>
+                    <form class="d-flex" role="search" action="includes/search_results.inc.php" method="get">
+    <input class="form-control me-2" type="search" name="query" placeholder="Hledat Film, osobu..." aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Vyhledat</button>
+</form>
                 </div>
             </div>
             <?php  display_films();?>
