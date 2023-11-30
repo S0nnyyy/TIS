@@ -26,7 +26,7 @@ check_admin();
     <script>
 </script>
 </head>
-    <body>
+    <body class="bg-light bg-gradient"> 
         <header>
             <?php header_html();?>
         </header>

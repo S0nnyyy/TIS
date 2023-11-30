@@ -1,0 +1,114 @@
+/* Styl pro odstup a padding pro prvek s třídou .section_padding_130 */
+.section_padding_130 {
+  padding-top: 130px;
+  padding-bottom: 130px;
+}
+
+/* Styl pro prvek s třídou .faq_area */
+.faq_area {
+  position: relative;
+  z-index: 1;
+}
+
+/* Styl pro prvek s třídou .faq-accordian */
+.faq-accordian {
+  position: relative;
+  z-index: 1;
+}
+
+/* Styl pro karty v akordionu s třídou .card */
+.faq-accordian .card {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1.5rem;
+}
+
+/* Styl pro poslední kartu v akordionu s třídou .card */
+.faq-accordian .card:last-child {
+  margin-bottom: 0;
+}
+
+/* Styl pro záhlaví karty v akordionu s třídou .card-header */
+.faq-accordian .card .card-header {
+  background-color: #ffffff;
+  padding: 0;
+  border-bottom-color: #ebebeb;
+}
+
+/* Styl pro nadpis v záhlaví karty v akordionu s třídou .card-header h6 */
+.faq-accordian .card .card-header h6 {
+  cursor: pointer;
+  padding: 1.75rem 2rem;
+  color: #3f43fd;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+/* Styl pro span v nadpisu v záhlaví karty v akordionu */
+.faq-accordian .card .card-header h6 span {
+  font-size: 1.5rem;
+}
+
+/* Styl pro zvýraznění nadpisu v záhlaví karty v akordionu, když je složen */
+.faq-accordian .card .card-header h6.collapsed {
+  color: #070a57;
+}
+
+/* Styl pro span v nadpisu v záhlaví karty v akordionu, když je složen */
+.faq-accordian .card .card-header h6.collapsed span {
+  -webkit-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
+
+/* Styl pro tělo karty v akordionu s třídou .card-body */
+.faq-accordian .card .card-body {
+  padding: 1.75rem 2rem;
+}
+
+/* Styl pro poslední odstavec v těle karty v akordionu */
+.faq-accordian .card .card-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Styl pro podporu tlačítka na malých zařízeních */
+@media only screen and (max-width: 575px) {
+  .support-button p {
+    font-size: 14px;
+  }
+}
+
+/* Styl pro ikonu podporu tlačítka */
+.support-button i {
+  color: #3f43fd;
+  font-size: 1.25rem;
+}
+
+/* Styl pro ikonu podporu tlačítka na malých zařízeních */
+@media only screen and (max-width: 575px) {
+  .support-button i {
+    font-size: 1rem;
+  }
+}
+
+/* Styl pro odkaz podporu tlačítka */
+.support-button a {
+  text-transform: capitalize;
+  color: #2ecc71;
+}
+
+/* Styl pro odkaz podporu tlačítka na malých zařízeních */
+@media only screen and (max-width: 575px) {
+  .support-button a {
+    font-size: 13px;
+  }
+}
+
+/* Sty

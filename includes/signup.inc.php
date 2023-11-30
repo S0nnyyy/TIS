@@ -58,6 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Vytvoření uživatele a přesměrování na registraci s úspěšnou zprávou
         create_user($pdo, $username, $password, $email);
         header('Location: ../register.php?signup=success');
+        header('Location: ../login.php');
         $pdo = null;
         $stmt = null;
         die();

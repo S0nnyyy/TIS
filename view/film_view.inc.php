@@ -16,7 +16,7 @@ function display_film() {
     // Tlačítko Zpět
     echo '<div class="row mb-3">';
     echo '<div class="col-md-12">';
-    echo '<a href="javascript:history.go(-1)" class="btn btn-primary">Zpět</a>';
+    echo '<a href="index.php" class="btn btn-primary">Zpět</a>';
     echo '</div>';
     echo '</div>';
 

@@ -23,7 +23,7 @@
     <script src="https://kit.fontawesome.com/7acc93703f.js" crossorigin="anonymous"></script>
 
 </head>
-    <body>
+    <body class="bg-light bg-gradient">
         <header><?php header_html();?>;</header>
         <main><?php display_film();?></main>
         <!--FOOTER-->

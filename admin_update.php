@@ -29,7 +29,7 @@ $loadedUserData = $_SESSION['loaded_user_data'] ?? [];
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
-<body>
+<body class="bg-light bg-gradient">
     <main class="container my-5">
         <h2>Uprava uživatele - <?= $loadedUserData['username'] ?? '' ?></h2>
         <h7 class="m-3">ID: <?= $loadedUserData['id'] ?? '' ?></h7>

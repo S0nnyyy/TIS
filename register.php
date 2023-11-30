@@ -18,7 +18,7 @@
 			<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
 				<form action="includes/signup.inc.php" method="post" class="shadow-lg p-4 rounded" >
 					<div class="header d-flex justify-content-center align-items-center">
-						<img src="./img/logo/icon.png" alt="login logo">
+						<img src="./img/profile/default_avatar.png" alt="login logo">
 					</div>
 					<div class="label">
 						<h3 class="text-center p-4">REGISTROVAT SE</h3>

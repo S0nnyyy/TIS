@@ -12,8 +12,8 @@ function footer_html() {
     echo '        <ul class="nav justify-content-center border-bottom pb-3 mb-3">';
     echo '            <li class="nav-item"><a href="index.php" class="nav-link px-2 text-body-secondary">Filmy</a></li>';
     echo '            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Novinky</a></li>';
-    echo '            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>';
-    echo '            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">O nás</a></li>';
+    echo '            <li class="nav-item"><a href="faqs.php" class="nav-link px-2 text-body-secondary">FAQs</a></li>';
+    echo '            <li class="nav-item"><a href="contact.php" class="nav-link px-2 text-body-secondary">Kontakt</a></li>';
     echo '        </ul>';
     
     // Textový odstavec s copyright informací, zarovnaným uprostřed

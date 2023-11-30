@@ -22,13 +22,13 @@ function header_html(){
     echo '                    <a class="nav-link active" aria-current="page" href="index.php">Filmy</a>';
     echo '                </li>';
     echo '                <li class="nav-item">';
-    echo '                    <a class="nav-link" href="#">Novinky</a>';
+    echo '                    <a class="nav-link" href="news.php">Novinky</a>';
     echo '                </li>';
     echo '                <li class="nav-item">';
-    echo '                    <a class="nav-link" href="faq.php">FAQs</a>';
+    echo '                    <a class="nav-link" href="faqs.php">FAQs</a>';
     echo '                </li>';
     echo '                <li class="nav-item">';
-    echo '                    <a class="nav-link" href="#">O nás</a>';
+    echo '                    <a class="nav-link" href="contact.php">Kontakt</a>';
     echo '                </li>';
     echo '            </ul>';
 
