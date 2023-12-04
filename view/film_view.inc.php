@@ -88,60 +88,64 @@ function display_film() {
     echo '</style>';
     
     // Zobrazení komentářů
-    foreach ($comments as $comment):
-        echo '<div class="row justify-content-center mb-4">';
-        echo '    <div class="col-md-12 col-lg-10 col-xl-8">';
-        echo '        <div class="card">';
-        echo '            <div class="card-body">';         
-        echo '                <div class="d-flex flex-start align-items-center">';
-        echo '                    <img class="rounded-circle shadow-1-strong me-3"';
-        echo '                        src="./img/profile/default_avatar.png"';
-        echo '                        alt="avatar" width="60" height="60" />';
-        echo '                    <div>';
-        echo '                        <h6 class="fw-bold text-primary mb-1">' . $comment['username'] . '</h6>';
-        echo '                        <p class="text-muted small mb-0">';
-        echo '                            ' . date('M Y', strtotime($comment['created_at'])) . '';
-        echo '                        </p>';
-        echo '                    </div>';
-        echo '                </div>';
-        echo '                <p class="mt-3 mb-4 pb-2">' . $comment['comment_text'] . '</p>';
-        
-        // Pokud komentář patří přihlášenému uživateli
-        if (isset($_SESSION['user_id']) && $comment['user_id'] == $_SESSION['user_id']) {
-            echo '<div class="float-end small d-flex justify-content-start">';
-            echo '    <div class="dropdown">';
-            echo '        <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="true">';
-            echo '            <i class="fa fa-ellipsis-h" aria-hidden="true"></i>';
-            echo '        </button>';
-            echo '        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">';
-            echo '    <form class="dropdown-item" method="post" action="includes/delete_comment.inc.php">';
-            echo '        <input type="hidden" name="comment_id" value="' . $comment['comment_id'] . '">';
-            echo '        <button class="btn btn-link" type="submit"><i class="fas fa-trash-alt me-2"></i>Odstranit Komentář</button>';
-            echo '    </form>';
-            echo '        </ul>';
-            echo '    </div>';
-            echo '</div>';
-        }
-        
-        echo '                <div class="small d-flex justify-content-start">';
-        echo '                    <a href="#!" class="d-flex align-items-center me-3">';
-        echo '                        <i class="far fa-thumbs-up me-2"></i>';
-        echo '                        <p class="mb-0">Like</p>';
-        echo '                    </a>';
-        echo '                    <a href="#!" class="d-flex align-items-center me-3">';
-        echo '                        <i class="far fa-comment-dots me-2"></i>';
-        echo '                        <p class="mb-0">Comment</p>';
-        echo '                    </a>';
-        echo '                    <a href="#!" class="d-flex align-items-center me-3">';
-        echo '                        <i class="fas fa-share me-2"></i>';
-        echo '                        <p class="mb-0">Share</p>';
-        echo '                    </a>';
-        echo '                </div>';
-        echo '            </div>';
-        echo '        </div>';
+// Zobrazení komentářů
+foreach ($comments as $comment):
+    echo '<div class="row justify-content-center mb-4">';
+    echo '    <div class="col-md-12 col-lg-10 col-xl-8">';
+    echo '        <div class="card">';
+    echo '            <div class="card-body">';         
+    echo '                <div class="d-flex flex-start align-items-center">';
+    echo '                    <img class="rounded-circle shadow-1-strong me-3"';
+    echo '                        src="./img/profile/default_avatar.png"';
+    echo '                        alt="avatar" width="60" height="60" />';
+    echo '                    <div>';
+    echo '                        <h6 class="fw-bold text-primary mb-1">' . $comment['username'] . '</h6>';
+    echo '                        <p class="text-muted small mb-0">';
+    echo '                            ' . date('M Y', strtotime($comment['created_at'])) . '';
+    echo '                        </p>';
+    echo '                    </div>';
+    echo '                </div>';
+    echo '                <p class="mt-3 mb-4 pb-2">' . $comment['comment_text'] . '</p>';
+    
+    // Check if the logged-in user is an admin
+    $isAdmin = ($_SESSION["role"]["role"] === 'admin');
+    
+    // Pokud komentář patří přihlášenému uživateli nebo je admin
+    if ((isset($_SESSION['user_id']) && $comment['user_id'] == $_SESSION['user_id']) || $isAdmin) {
+        echo '<div class="float-end small d-flex justify-content-start">';
+        echo '    <div class="dropdown">';
+        echo '        <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="true">';
+        echo '            <i class="fa fa-ellipsis-h" aria-hidden="true"></i>';
+        echo '        </button>';
+        echo '        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">';
+        echo '    <form class="dropdown-item" method="post" action="includes/delete_comment.inc.php">';
+        echo '        <input type="hidden" name="comment_id" value="' . $comment['comment_id'] . '">';
+        echo '        <button class="btn btn-link" type="submit"><i class="fas fa-trash-alt me-2"></i>Odstranit Komentář</button>';
+        echo '    </form>';
+        echo '        </ul>';
         echo '    </div>';
         echo '</div>';
-    endforeach;
+    } 
+    echo '                <div class="small d-flex justify-content-start">';
+    echo '                    <a href="#!" class="d-flex align-items-center me-3">';
+    echo '                        <i class="far fa-thumbs-up me-2"></i>';
+    echo '                        <p class="mb-0">Like</p>';
+    echo '                    </a>';
+    echo '                    <a href="#!" class="d-flex align-items-center me-3">';
+    echo '                        <i class="far fa-comment-dots me-2"></i>';
+    echo '                        <p class="mb-0">Comment</p>';
+    echo '                    </a>';
+    echo '                    <a href="#!" class="d-flex align-items-center me-3">';
+    echo '                        <i class="fas fa-share me-2"></i>';
+    echo '                        <p class="mb-0">Share</p>';
+    echo '                    </a>';
+    echo '                </div>';
+    echo '            </div>';
+    echo '        </div>';
+    echo '    </div>';
+    echo '</div>';
+endforeach;
+
 
     // Konec kontejneru
     echo '</div>';
