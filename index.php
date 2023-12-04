@@ -62,7 +62,7 @@ check_session();
                     </div>
                     <!-- Formulář pro vyhledávání -->
                     <form class="d-flex" role="search" action="includes/search_results.inc.php" method="get">
-                        <input class="form-control me-2" type="search" name="query" placeholder="Hledat Film, osobu..." aria-label="Search">
+                        <input class="form-control me-2" type="search" name="query" placeholder="Hledat Film..." aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Vyhledat</button>
                     </form>
                 </div>
