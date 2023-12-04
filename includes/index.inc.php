@@ -21,6 +21,7 @@ $user = get_user_role($pdo, $userUsername);
 $_SESSION["role"] = $user;
 
 // Získání seznamu filmů a uložení do relační proměnné session
-$films = get_Films($pdo);
+$sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'none';
+$films = get_films($pdo, $sort_by);
 $_SESSION["films"] = $films;
 ?>

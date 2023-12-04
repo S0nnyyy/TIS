@@ -4,16 +4,51 @@
 declare(strict_types=1);
 
 /**
- * Funkce pro získání všech filmů z databáze.
+ * Funkce pro získání všech filmů z databáze se specifikovaným řazením.
  *
  * @param object $pdo - PDO objekt připojení k databázi
+ * @param string $sort_by - Kritérium pro řazení filmů
  * @return array - Pole obsahující všechny filmy ve formě asociativního pole nebo prázdné pole, pokud nejsou žádné filmy k dispozici
  */
-function get_Films(object $pdo) {
-    $query = "SELECT * FROM movies";
-    $stmt = $pdo->query($query);
+function get_films(object $pdo, string $sort_by): array {
+    // ... (Předchozí kód) ...
+
+    // Zjistěte, podle čeho se má řadit
+    switch ($sort_by) {
+        case 'name':
+            $orderBy = 'title';
+            break;
+        case 'rating':
+            $orderBy = 'rating';
+            break;
+        case 'genre':
+            $orderBy = 'genre';
+            break;
+        case 'best-rating':
+            $orderBy = 'rating DESC';
+            break;
+        case 'worst-rating':
+            $orderBy = 'rating ASC';
+            break;
+        case 'none':
+        default:
+            $orderBy = 'default_column';
+    }
+
+    // SQL dotaz pro získání filmů seřazených podle zadaného kritéria
+    if ($orderBy === 'default_column') {
+        $sql = "SELECT * FROM movies";
+    } else {
+        $sql = "SELECT * FROM movies ORDER BY $orderBy";
+    }
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    // Vrátit výsledky
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
 
 /**
  * Funkce pro získání role uživatele z databáze na základě uživatelského jména.

@@ -12,9 +12,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Přesměrování na stránku pro aktualizaci administrátorských informací
         if (isset($_POST['user_id'])) {
-            $userId = $_POST['user_id'];
+            $user_id = $_POST['user_id'];
             
-            $loadedUserData = get_user_data($pdo, $userId);
+            $loadedUserData = get_user_data($pdo, $user_id);
         
             $_SESSION['loaded_user_data'] = $loadedUserData;
         }

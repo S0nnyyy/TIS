@@ -52,9 +52,11 @@ check_session();
                                 Řadit podle
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Název</a></li>
-                                <li><a class="dropdown-item" href="#">Žánr</a></li>
-                                <li><a class="dropdown-item" href="#">Hodnocení</a></li>
+                                <li><button class="dropdown-item btn btn-link sort-btn" data-sort-by="none">Bez řazení</button></li>
+                                <li><button class="dropdown-item btn btn-link sort-btn" data-sort-by="name">Název</button></li>
+                                <li><button class="dropdown-item btn btn-link sort-btn" data-sort-by="genre">Žánr</button></li>
+                                <li><button class="dropdown-item btn btn-link sort-btn" data-sort-by="best-rating">Nejlepší hodnocení</button></li>
+                                <li><button class="dropdown-item btn btn-link sort-btn" data-sort-by="worst-rating">Nejhorší hodnocení</button></li>
                             </ul>
                         </div>
                     </div>
@@ -73,5 +75,16 @@ check_session();
         <?php footer_html(); ?>
     </div>
 </body>
-
+    <script>
+        // Přidání skriptu pro přesměrování po kliknutí na tlačítko v dropdown menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const sortButtons = document.querySelectorAll('.sort-btn');
+            sortButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const sortBy = this.getAttribute('data-sort-by');
+                    window.location.href = `index.php?sort_by=${sortBy}`;
+                });
+            });
+        });
+    </script>
 </html>
