@@ -30,7 +30,6 @@ check_session();
         <?php header_html(); ?>
     </header>
     <main class="container">
-        <body>
             <div class="container py-5">
                 <div class="row">
                     <div class="col">
@@ -91,7 +90,6 @@ check_session();
                 </div>
                 <hr class="my-5">
             </div>
-        </body>
     </main>
     <!-- Footer -->
     <?php footer_html(); ?>

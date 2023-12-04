@@ -7,8 +7,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/dbh.inc.php';
         require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/model/film_model.inc.php';
         require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/controller/film_contr.inc.php';
-        
-        
 
         // Získání ID filmu z query řetězce
         $film_id = isset($_GET['film_id']) ? $_GET['film_id'] : null;
@@ -24,11 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
         require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/config_session.inc.php';
 
-        
         // Uložení filmových dat do session
         $_SESSION['film_data'] = $film_data;
         $_SESSION['film_id'] = $film_id;
-
 
         // Přesměrování na stránku film.php
         header('Location: ../film.php');
@@ -43,5 +39,4 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     header('Location: ../index.php');
     die();
 }
-
 ?>

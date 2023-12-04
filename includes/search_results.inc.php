@@ -1,38 +1,27 @@
 <?php
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/dbh.inc.php';
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/config_session.inc.php';
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/check_session.inc.php';
 
-    check_session();
+// Importujte soubory s funkcemi a konfiguracemi
+require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/dbh.inc.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/model/search_model.inc.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/config_session.inc.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/check_session.inc.php';
 
-    // Vyhledávací logika
-    if (isset($_GET['query'])) {
-        $query = strtolower($_GET['query']);
+// Kontrola uživatelské relace
+check_session();
 
-        function searchMoviesByTitle($pdo, $query) {
-            try {
-                $stmt = $pdo->prepare('SELECT id, title FROM movies WHERE LOWER(title) LIKE :query');
-                $stmt->bindValue(':query', '%' . strtolower($query) . '%', PDO::PARAM_STR);
-                $stmt->execute();
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } catch (PDOException $e) {
-                echo 'Chyba při provádění dotazu: ' . $e->getMessage();
-                exit();
-            }
-        }
+// Vyhledávací logika
+if (isset($_GET['query'])) {
+    // Získání hledaného dotazu a převedení na malá písmena
+    $query = strtolower($_GET['query']);
+ 
+    // Volání funkce pro vyhledávání filmů podle názvu
+    $results = searchMoviesByTitle($pdo, $query);
+    
+    // Uložení výsledků do relace pro zobrazení na stránce search.php
+    $_SESSION["search"] = $results;
+    
+    // Přesměrování na stránku pro zobrazení výsledků vyhledávání
+    header("Location: ../search.php");
+}
 
-        // Zavolejte funkci searchMoviesByTitle a uložte její výsledek do $results
-        $results = searchMoviesByTitle($pdo, $query);
-
-        // Zobrazte výsledky
-        if (!empty($results)) {
-            echo "Výsledky hledání:\n";
-            foreach ($results as $result) {
-                // Vytvořte odkaz s ID filmu a názvem filmu
-                echo '<a href="movie_detail.php?id=' . $result["id"] . '">' . $result["title"] . '</a><br>';
-            }
-        } else {
-            echo "Žádné výsledky nenalezeny.\n";
-        }
-    }
 ?>
