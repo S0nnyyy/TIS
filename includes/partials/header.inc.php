@@ -39,9 +39,6 @@ function header_html(){
     echo '                        Jste přihlášen jako <strong>' . $_SESSION["user_username"] . '</strong>';
     echo '                    </button>';
     echo '                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">';
-    echo '                        <li><a class="dropdown-item" href="profile.php">Profil</a></li>';
-    echo '                        <li><a class="dropdown-item" href="#">Nastavení</a></li>';
-
     // Check if the user has an admin role
     if ($roleValue === 'admin'){
         echo '<li><a class="dropdown-item" href="#">';
