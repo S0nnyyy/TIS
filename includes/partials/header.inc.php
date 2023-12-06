@@ -39,16 +39,26 @@ function header_html(){
     echo '                        Jste přihlášen jako <strong>' . $_SESSION["user_username"] . '</strong>';
     echo '                    </button>';
     echo '                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">';
+    echo '                      <li>';
+    echo '                          <a class="dropdown-item" href="#">';
+    echo '                              <form action="includes/profile.inc.php" method="post">';
+    echo '                                  <button class="btn btn-link text-white text-decoration-none" href="./">Profil</button>';
+    echo '                              </form>';
+    echo '                          </a>';
+    echo '                      </li>';
+
     // Check if the user has an admin role
     if ($roleValue === 'admin'){
-        echo '<li><a class="dropdown-item" href="#">';
+        echo '<li>';
+        echo '  <a class="dropdown-item" href="#">';
         echo '      <form action="includes/admin.inc.php" method="post">';
         echo '          <button class="btn btn-info" href="./">Admin Panel</button>';
         echo '      </form>';
-        echo '</a>';
+        echo '  </a>';
+        echo '</li>';
+
     }
 
-    echo '                        </li>';
     echo '                        <li><a class="dropdown-item" href="#">';
     echo '                                <form action="includes/logout.inc.php" method="post">';
     echo '                                    <button class="btn btn-danger">Odhlasit se</button>';

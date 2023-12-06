@@ -1,7 +1,9 @@
 <?php
 // Load session configuration first
 require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/config_session.inc.php';
-var_dump($_SESSION["user_id"]); // Add this line for debugging
+require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/check_session.inc.php';
+
+check_session();
 
 // Kontrola, zda byl požadavek odeslán metodou POST
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
