@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/controller/film_contr.inc.php';
         require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/check_session.inc.php';
 
-        check_session();
+        //check_session();
 
         // Získání ID filmu z query řetězce
         $film_id = isset($_GET['film_id']) ? $_GET['film_id'] : null;

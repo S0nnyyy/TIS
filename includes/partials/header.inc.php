@@ -46,6 +46,11 @@ function header_html(){
     echo '                              </form>';
     echo '                          </a>';
     echo '                      </li>';
+    echo '                      <li>';
+    echo '                          <a class="dropdown-item" href="contact.php">';
+    echo '                              <button class="btn btn-link text-white text-decoration-none">Podpora</button>';
+    echo '                          </a>';
+    echo '                      </li>';
 
     // Check if the user has an admin role
     if ($roleValue === 'admin'){
