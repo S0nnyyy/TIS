@@ -33,7 +33,7 @@ check_session();
         <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
             <div class="col-md-6 px-0">
                 <h1 class="display-4 font-italic">Hledáme posily do našeho teamu.</h1>
-                <p class="lead my-3">Přidejte se k naší skvělé partě! Hledáme nadšené jedince, kteří budou sdílet své dovednosti a společně tvořit nezapomenutelné projekty. Staňte se součástí naší vášnivé a kreativní rodiny</p>
+                <p class="lead my-3">Přidejte se k naší skvělé partě! Hledáme nadšené jedince, kteří budou sdílet své dovednosti a společně tvořit nezapomenutelné projekty. Staňte se součástí naší vášnivé a kreativní rodiny.</p>
                 <p class="lead mb-0"><a href="contact.php" class="text-white font-weight-bold">Kontaktuj nás</a></p>
             </div>
         </div>
