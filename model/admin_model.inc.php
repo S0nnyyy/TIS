@@ -93,4 +93,29 @@ function remove_ban_user(object $pdo, int $userId) {
     $stmt->execute();
 }
 
+/**
+ * Funkce pro získání všech zpráv z databáze.
+ *
+ * @param object $pdo - PDO objekt připojení k databázi
+ * @return array - Pole obsahující všechny zprávy ve formě asociativního pole nebo prázdné pole, pokud nejsou žádné zprávy k dispozici
+ */
+function get_messages(object $pdo) {
+    $query = "SELECT * FROM contact_form";
+    $stmt = $pdo->query($query);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+/**
+ * Funkce pro získání všech filmů z databáze.
+ *
+ * @param object $pdo - PDO objekt připojení k databázi
+ * @return array - Pole obsahující všechny filmy ve formě asociativního pole nebo prázdné pole, pokud nejsou žádné filmy k dispozici
+ */
+function get_movies(object $pdo) {
+    $query = "SELECT * FROM movies";
+    $stmt = $pdo->query($query);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
 ?>

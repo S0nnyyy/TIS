@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/check_session.inc.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/check_admin.inc.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/partials/header.inc.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/partials/footer.inc.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/view/admin_update_view.inc.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/view/add_film_view.inc.php';
 
 check_session();
 check_admin();
@@ -26,6 +26,6 @@ check_admin();
 </head>
 
 <body class="bg-light bg-gradient">
-    <?php display_update();?>
+    <?php display_form_film();?>
 </body>
 </html>

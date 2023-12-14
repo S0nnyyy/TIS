@@ -18,6 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Získání informací o všech uživatelích a uložení do session
             $users = get_users($pdo);
             $_SESSION["users"] = $users;
+
+            $messages = get_messages($pdo);
+            $_SESSION["messages"] = $messages;
+            
+            $movies = get_movies($pdo);
+            $_SESSION["movies"] = $movies;
             // Přesměrování na administrační stránku
             header("Location: ../admin.php");
             exit();
