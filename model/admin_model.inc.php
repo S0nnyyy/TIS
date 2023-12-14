@@ -117,5 +117,40 @@ function get_movies(object $pdo) {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function add_film_to_database(
+    object $pdo,
+    string $title,
+    string $description,
+    int $rating,
+    string $genre,
+    string $director,
+    string $release_date,
+    ?string $duration,
+    ?string $tags,
+    string $image_url
+) {
+    try {
+        // Příprava dotazu
+        $query = "INSERT INTO movies (title, description, rating, genre, director, release_date, duration, tags, image_url) 
+                  VALUES (:title, :description, :rating, :genre, :director, :release_date, :duration, :tags, :image_url)";
+
+        // Příprava a provedení připraveného dotazu
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->bindParam(':description', $description, PDO::PARAM_STR);
+        $stmt->bindParam(':rating', $rating, PDO::PARAM_INT);
+        $stmt->bindParam(':genre', $genre, PDO::PARAM_STR);
+        $stmt->bindParam(':director', $director, PDO::PARAM_STR);
+        $stmt->bindParam(':release_date', $release_date, PDO::PARAM_STR);
+        $stmt->bindParam(':duration', $duration, PDO::PARAM_STR);
+        $stmt->bindParam(':tags', $tags, PDO::PARAM_STR);
+        $stmt->bindParam(':image_url', $image_url, PDO::PARAM_STR);
+        $stmt->execute();
+
+    } catch (PDOException $e) {
+        // V případě chyby v dotazu vypíše chybové hlášení
+        echo "Chyba: " . $e->getMessage();
+    }
+}
 
 ?>

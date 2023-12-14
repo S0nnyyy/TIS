@@ -6,7 +6,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     try {
         // Načtení potřebných souborů a konfigurace
         require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/dbh.inc.php';
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/model/add_film_model.inc.php';
         require_once $_SERVER['DOCUMENT_ROOT'] . '/TIS/includes/config_session.inc.php';
 
 

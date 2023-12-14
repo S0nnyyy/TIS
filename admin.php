@@ -70,8 +70,11 @@ check_admin();
                                     </div>
                                     <!-- 3 -->
                                     <div class="card border-0 wow fadeInUp shadow rounded" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
-                                        <div class="card-header" id="headingThree">
+                                        <div class="card-header d-flex justify-content-between align-items-center" id="headingThree">
                                             <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Filmy<span class="lni-chevron-up"></span></h6>
+                                            <form class="form-inline" role="search" action="includes/add_film.inc.php" method="post">
+                                                <button class="btn btn-link">Přidat Film</button>
+                                            </form>
                                         </div>
                                         <div class="collapse" id="collapseThree" aria-labelledby="headingThree" data-parent="#faqAccordion">
                                             <div class="card-body">

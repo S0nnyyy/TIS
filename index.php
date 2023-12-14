@@ -60,11 +60,6 @@ check_session();
                             </ul>
                         </div>
                     </div>
-                    <div>
-                        <form class="d-flex" role="search" action="includes/add_film.inc.php" method="post">
-                            <button class="btn btn-link ">Přidat Film</button></li>
-                        </form>
-                    </div>
                     <!-- Formulář pro vyhledávání -->
                     <form class="d-flex" role="search" action="includes/search_results.inc.php" method="get">
                         <input class="form-control me-2" type="search" name="query" placeholder="Hledat Film..." aria-label="Search">
