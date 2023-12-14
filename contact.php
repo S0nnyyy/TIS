@@ -60,14 +60,14 @@ check_session();
                                         <label for="your-subject" class="form-label">Důvod kontaktu</label>
                                         <!-- Dropdown pro výběr důvodu kontaktu -->
                                         <select class="form-select" id="your-subject" name="your-subject" required>
-                                            <option value="" disabled selected>Vyberte důvod kontaktu</option>
-                                            <option value="1">Technický problém</option>
-                                            <option value="2">Dotaz na obsah</option>
-                                            <option value="3">Návrhy a připomínky</option>
-                                            <option value="4">Reklamace</option>
-                                            <option value="5">Spolupráce</option>
-                                            <option value="6">Ostatní</option>
-                                            <option value="7">Hlášení nevhodného obsahu</option>
+                                            <option value="none" disabled selected>Vyberte důvod kontaktu</option>
+                                            <option value="Technický problém">Technický problém</option>
+                                            <option value="Dotaz na obsah">Dotaz na obsah</option>
+                                            <option value="Návrhy a připomínky">Návrhy a připomínky</option>
+                                            <option value="Reklamace">Reklamace</option>
+                                            <option value="polupráce">Spolupráce</option>
+                                            <option value="Ostatní">Ostatní</option>
+                                            <option value="Hlášení nevhodného obsahu">Hlášení nevhodného obsahu</option>
                                         </select>
                                     </div>
                                     <div class="col-12">

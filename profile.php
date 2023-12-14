@@ -37,7 +37,7 @@
         </nav>
       </div>
     </div>
-    <?php display_user();?>
+    <div class="vh-100"><?php display_user();?></div>
         <!--FOOTER-->
         <div>
           <?php footer_html();?>

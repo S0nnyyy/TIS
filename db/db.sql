@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: 127.0.0.1
--- Vytvořeno: Čtv 14. pro 2023, 21:14
+-- Vytvořeno: Čtv 14. pro 2023, 22:04
 -- Verze serveru: 10.4.28-MariaDB
 -- Verze PHP: 8.2.4
 
@@ -55,7 +55,7 @@ INSERT INTO `comments` (`comment_id`, `user_id`, `movie_id`, `comment_text`, `cr
 CREATE TABLE `contact_form` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `subject` int(11) NOT NULL,
+  `subject` text NOT NULL,
   `message` text NOT NULL,
   `submission_time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -65,12 +65,7 @@ CREATE TABLE `contact_form` (
 --
 
 INSERT INTO `contact_form` (`id`, `username`, `subject`, `message`, `submission_time`) VALUES
-(1, 'a', 2, 'adad', '2023-11-29 22:23:48'),
-(2, 'a', 4, 'adadadad', '2023-11-29 22:26:57'),
-(3, 'a', 3, 'adad', '2023-11-29 22:29:53'),
-(4, 'a', 3, 'adad', '2023-11-29 22:47:31'),
-(5, 'a', 3, 'test', '2023-11-29 22:48:48'),
-(6, 'a', 6, 'aeaeae', '2023-11-29 22:57:46');
+(10, 'a', 'Technický problém', 'Nenačítá něco', '2023-12-14 21:03:59');
 
 -- --------------------------------------------------------
 
@@ -112,8 +107,7 @@ INSERT INTO `movies` (`id`, `title`, `description`, `rating`, `genre`, `director
 (14, 'The Haunting of Hill House', 'The Haunting of Hill House je působivý hororový dramatik, který nás vtahuje do temné historie rodiny Crain a jejich traumatizujícího pobytu v oduševnělém sídle Hill House. Seriál zdůrazňuje jak psychologické, tak nadpřirozené prvky, nabízí vysoce kvalitní scénář, vynikající režii a dojemné herecké výkony. Skrz kruhovou kompozici a nečekané zvraty v příběhu vytváří \"The Haunting of Hill House\" zlověstnou atmosféru, která zanechává diváka s intenzivními emocemi a dojmy. Kombinuje hrůzu s hloubkou postav a vytváří jedinečný hororový zážitek.', 5, 'Horror', 'Mike Flanagan', '2018-10-12', NULL, 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/38PkhBGRQtmVx2drvPik3F42qHO.jpg', 'horror, drama, haunted house', 'Strašení v domě na kopci'),
 (15, 'Lucifer', 'Lucifer je fascinující urban fantasy, která přináší neotřelý pohled na legendární postavu Ďábla. Sledujeme Lucifera Morningstara, který opouští pekelný trůn, aby prozkoumal lidský svět v Los Angeles. Seriál kombinuje detektivní prvky s nadpřirozeným, vytvářející unikátní mix mysteriózního dramatu a sarkastického humoru. Tom Ellis exceluje v roli Lucifera, přinášející charisma a vtip, což dodává seriálu jedinečný šmrnc. \"Lucifer\" oslovuje nejen fanoušky nadpřirozena, ale i ty, kteří ocení filozofické otázky o dobru a zlu.', 5, 'Fantasy', 'Joe Henderson', '2016-01-25', NULL, 'https://www.themoviedb.org/t/p/original/lYMdzZNTS3aD0dNtxK2kunFVkbm.jpg', 'fantasy, crime, devil', 'Lucifer'),
 (17, 'Sherlock', '\nSherlock je moderní adaptace legendárních příběhů o Sherlocku Holmesovi, která přesouvá slavného detektiva do současného Londýna. Benedict Cumberbatch vytváří vynikající portrét Sherlocka, a Martin Freeman jako John Watson přináší do série vtip a laskavost. S vynikajícím scénářem, rychlým tempem a brilantním vykreslením detektivních hádanek nabízí \"Sherlock\" osvěžující a moderní pohled na klasický žánr. S pečlivým zpracováním postav a poutavými zápletkami zůstává seriál věrný duchu původních příběhů od Arthura Conana Doylea, což činí \"Sherlock\" nejlepším současným zpracováním Sherlocka Holmese.', 5, 'Mystery', 'Mark Gatiss', '2010-07-25', NULL, 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7WTsnHkbA0FaG6R9twfFde0I9hl.jpg', 'mystery, detective, crime', 'Sherlock'),
-(19, 'Daredevil', 'Daredevil je temný a akční superhrdinský seriál, který přináší nekompromisní pohled na svět Matta Murdocka, slepého právníka, který se stává nočním ochráncem svého rodného Hell\'s Kitchen. Charlie Cox vyniká v roli Daredevila, což přispívá k hloubce postavy a výrazné atmosféře seriálu. S výborným choreografickým zpracováním bojových scén, taktickým využitím zvuků a vynikajícím výkonem Vincenta D\'Onofria jako Kingpina nabízí \"Daredevil\" věrné a poutavé ztvárnění klasického komiksového hrdiny. Seriál se vyznačuje komplexními postavami, morálními dilematy a temnou, realistickou atmosférou, což ho činí výjimečným v žánru superhrdinovských adaptací.', 1, 'Action', 'Drew Goddard', '2015-04-10', NULL, 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oCDBwSkntYamuw8VJIxMRCtDBmi.jpg', 'superhero, action, crime', 'Daredevil'),
-(32, 'dadadadad', 'adad', 1, 'adad', 'ada', '2023-12-14', NULL, 'https://i.ibb.co/27M4b0P/Sn-mek-obrazovky-2023-12-14-210901.png', 'dadad', NULL);
+(19, 'Daredevil', 'Daredevil je temný a akční superhrdinský seriál, který přináší nekompromisní pohled na svět Matta Murdocka, slepého právníka, který se stává nočním ochráncem svého rodného Hell\'s Kitchen. Charlie Cox vyniká v roli Daredevila, což přispívá k hloubce postavy a výrazné atmosféře seriálu. S výborným choreografickým zpracováním bojových scén, taktickým využitím zvuků a vynikajícím výkonem Vincenta D\'Onofria jako Kingpina nabízí \"Daredevil\" věrné a poutavé ztvárnění klasického komiksového hrdiny. Seriál se vyznačuje komplexními postavami, morálními dilematy a temnou, realistickou atmosférou, což ho činí výjimečným v žánru superhrdinovských adaptací.', 1, 'Action', 'Drew Goddard', '2015-04-10', NULL, 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oCDBwSkntYamuw8VJIxMRCtDBmi.jpg', 'superhero, action, crime', 'Daredevil');
 
 -- --------------------------------------------------------
 
@@ -186,7 +180,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT pro tabulku `contact_form`
 --
 ALTER TABLE `contact_form`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pro tabulku `movies`

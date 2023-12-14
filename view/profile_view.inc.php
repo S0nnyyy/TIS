@@ -15,16 +15,10 @@ function display_user() {
     echo '<img src="./img/profile/default_avatar.png" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">';
     echo '<h5 class="my-3">' . $userData['username'] . '</h5>';
     echo '<div class="d-flex justify-content-center mb-2">';
-    echo '<button type="button" class="btn btn-primary">Změnit údaje</button>';
     echo '</div>';
     echo '</div>';
     echo '</div>';
-    // Odkazy na sociální sítě
-    echo '<div class="card mb-4 mb-lg-0">';
-    echo '<div class="card-body p-0">';
-    // Přidejte odkazy na sociální sítě zde
-    echo '</div>';
-    echo '</div>';
+
     echo '</div>';
 
     echo '<div class="col-lg-8">';
