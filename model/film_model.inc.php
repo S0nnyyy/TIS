@@ -24,4 +24,24 @@ function get_film_data_by_id(object $pdo, int $film_id) {
     return $filmData ? $filmData : false;
 }
 
+/**
+ * Funkce pro odstranění filmu z databáze na základě jeho ID.
+ *
+ * @param PDO $pdo - PDO objekt připojení k databázi
+ * @param int $filmId - ID filmu, který má být odstraněn
+ */
+
+function remove_film_from_database(PDO $pdo, int $film_id) {
+    try {
+        // Příprava a provedení dotazu pro odstranění filmu
+        $stmt = $pdo->prepare("DELETE FROM movies WHERE id = :film_id");
+        $stmt->bindParam(':film_id', $film_id, PDO::PARAM_INT);
+        $stmt->execute();
+    } catch (PDOException $e) {
+        // Zpracování chyby v případě neúspěchu dotazu
+        // Zde byste měli implementovat vhodné chování, například výpis nebo záznam chyby do logu
+        die("Query Failed: " . $e->getMessage());
+    }
+}
+
 ?>

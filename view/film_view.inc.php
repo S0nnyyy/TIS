@@ -10,15 +10,39 @@ function display_film() {
     $filmData = $_SESSION["film_data"];
     $comments = $_SESSION['comments'];
 
+    $isAdmin = ($_SESSION["role"]["role"] === 'admin');
+
+
     // HTML kód pro stránku filmu
     echo '<div class="container mt-3">';
     
-    // Tlačítko Zpět
     echo '<div class="row mb-3">';
     echo '<div class="col-md-12">';
-    echo '<a href="index.php" class="btn btn-primary">Zpět</a>';
+    echo '<a href="index.php" class="btn btn-primary" style="margin-right: 10px;">Zpět</a>';
+
+    if ($isAdmin) {
+        echo '<form id="deleteForm" action="includes/delete_film.inc.php" method="post" style="display: inline;">';
+        // Zde přidáme skrytý vstup pro přenos dat o filmu
+        echo '<input type="hidden" id="film_id" name="film_id" value="' . $filmData['id'] . '">';
+
+        // Přidání skriptu pro potvrzení před odstraněním filmu
+        echo '<button type="button" class="btn btn-danger" onclick="confirmDelete()">Smazat film</button>';
+        echo '</form>';
+
+        // Skript pro potvrzení před odstraněním filmu
+        echo '<script>
+                function confirmDelete() {
+                    if (confirm("Opravdu chcete smazat tento film?")) {
+                        document.getElementById("deleteForm").submit();
+                    }
+                }
+            </script>';
+    }
+
     echo '</div>';
     echo '</div>';
+
+
 
     // Obrázek filmu vlevo
     echo '<div class="row">';
@@ -108,7 +132,6 @@ foreach ($comments as $comment):
     echo '                <p class="mt-3 mb-4 pb-2">' . $comment['comment_text'] . '</p>';
     
     // Check if the logged-in user is an admin
-    $isAdmin = ($_SESSION["role"]["role"] === 'admin');
     
     // Pokud komentář patří přihlášenému uživateli nebo je admin
     if ((isset($_SESSION['user_id']) && $comment['user_id'] == $_SESSION['user_id']) || $isAdmin) {
