@@ -49,7 +49,7 @@ check_session();
                             <h1 class="mb-3">Kontaktuj nás</h1>
                             <?php contact_form_state()?>
                             <!-- Formulář pro kontakt -->
-                            <form action="includes/contact.inc.php" method="post">
+                            <form action="includes_contact.inc.php" method="post" onsubmit="return validateForm()">
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <label for="your-email" class="form-label">Uživatelské jméno</label>
@@ -60,7 +60,7 @@ check_session();
                                         <label for="your-subject" class="form-label">Důvod kontaktu</label>
                                         <!-- Dropdown pro výběr důvodu kontaktu -->
                                         <select class="form-select" id="your-subject" name="your-subject" required>
-                                            <option value="none" disabled selected>Vyberte důvod kontaktu</option>
+                                            <option disabled selected>Vyberte důvod kontaktu</option>
                                             <option value="Technický problém">Technický problém</option>
                                             <option value="Dotaz na obsah">Dotaz na obsah</option>
                                             <option value="Návrhy a připomínky">Návrhy a připomínky</option>
@@ -93,6 +93,20 @@ check_session();
     </main>
     <!-- Footer -->
     <?php footer_html(); ?>
+    <!-- JavaScript kód pro validaci formuláře -->
+    <script>
+        function validateForm() {
+            var selectedOption = document.getElementById("your-subject").value;
+
+            if (selectedOption === "Vyberte důvod kontaktu") {
+                alert("Prosím, vyberte důvod kontaktu.");
+                return false; // Zabraňte odeslání formuláře
+            }
+
+            return true; // Povolte odeslání formuláře, pokud je vše v pořádku
+        }
+    </script>
 </body>
 
 </html>
+
